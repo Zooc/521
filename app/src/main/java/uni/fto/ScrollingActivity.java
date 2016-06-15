@@ -9,6 +9,8 @@ import android.view.View;
 import android.view.Menu;
 import android.view.MenuItem;
 
+import xyz.codezoo.waul.util.tips.SnackUtils;
+
 public class ScrollingActivity extends AppCompatActivity {
 
     @Override
@@ -26,6 +28,7 @@ public class ScrollingActivity extends AppCompatActivity {
                         .setAction("Action", null).show();
             }
         });
+        SnackUtils.showCommonMessage(getWindow().getDecorView(),"Fist Run",300);
     }
 
     @Override
