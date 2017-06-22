@@ -1,4 +1,3 @@
-# FiveTwoOne
+# Android development helper
 
-TODO
-1. add OnBoardingPlaceHolderEffect
+1. detect android device params
