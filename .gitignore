@@ -44,3 +44,5 @@ captures/
 
 javazoo/
 androidzoo/
+
+app/libs/*Debug*.aar
