@@ -1,1 +1,12 @@
-include ':app', ':javazoo', ':androidzoo'
+
+def gitBranchName() {
+    def cmd = "git symbolic-ref --short -q HEAD"
+    return cmd.execute().text.trim()
+}
+
+def brName = gitBranchName()
+if(brName=="master"){
+    include ':app'
+}else{
+    include ':app', ':javazoo', ':androidzoo'
+}

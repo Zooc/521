@@ -30,6 +30,10 @@ android {
             dirs 'libs'
         }
     }
+
+    lintOptions {
+        abortOnError false
+    }
 }
 
 dependencies {
@@ -40,7 +44,14 @@ dependencies {
 
     def brName = gitBranchName();
     if (brName == "master") {
-        compile(name: 'anzoo_100', ext: 'aar')
+
+        def libPath = "app/libs/"
+
+        def anzoo = 'anzoo_100'
+        def anzooFile = new File(libPath, anzoo + '.aar')
+        if (anzooFile.exists()) {
+            compile(name: anzoo, ext: 'aar')
+        }
         compile 'com.android.support:appcompat-v7:25.3.1'
     } else {
         compile project(':androidzoo')
@@ -49,12 +60,12 @@ dependencies {
 
 task copyTask(type: Copy) {
     def version = 100
-    if(isDebug){
-        from 'androidzoo/build/outputs/aar/debug/anzoo_'+version+'.aar'
+    if (isDebug) {
+        from 'androidzoo/build/outputs/aar/debug/anzoo_' + version + '.aar'
         into 'app/libs/'
-    }else{
-        from 'androidzoo/build/outputs/aar/release/anzoo_'+version+'.aar'
+    } else {
+        from 'androidzoo/build/outputs/aar/release/anzoo_' + version + '.aar'
         into 'app/libs/'
     }
-
 }
+
