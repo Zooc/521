@@ -2,11 +2,14 @@ package an.devhp;
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;
-import android.widget.TextView;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
 
-import an.devhp.base.BaseActivity;
-import an.devhp.util.DeviceUtil;
-import an.devhp.util.JsonUtil;
+import an.devhp.Architecture.BasePresenter;
+import an.devhp.manager.SimpleFragmentId;
+import an.devhp.ui.BaseActivity;
+import an.devhp.util.AcUtil;
 
 /**
  * @description:
@@ -20,11 +23,21 @@ public class AnMainActivity extends BaseActivity {
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.acty_an_main);
-        TextView deviceInfoTv = (TextView) findViewById(R.id.cpu_info_tv);
-        deviceInfoTv.setText(JsonUtil.prettyFormatJson(DeviceUtil.getMobileInfo()));
-        deviceInfoTv.setText(DeviceUtil.getCpuType());
-        deviceInfoTv.setText(DeviceUtil.getIpAddress(this));
-        deviceInfoTv.setText(DeviceUtil.getCpuModel());
+        findViewById(R.id.tv).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                AcUtil.startSimpleActivity(AnMainActivity.this, SimpleFragmentId.SELECT_PICTURE, null);
+            }
+        });
+    }
+
+    @Override
+    protected View onCreateContentView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+        return inflater.inflate(R.layout.acty_an_main,container,false);
+    }
+
+    @Override
+    protected BasePresenter onCreatePresenter() {
+        return null;
     }
 }
