@@ -15,8 +15,8 @@ public class StringUtil {
      * @param string
      * @return
      */
-    public static boolean isEmpty(String string) {
-        return string == null || "".equals(string.trim()) || string == "null";
+    public static boolean isEmpty(CharSequence string) {
+        return string == null || string.length() == 0 || string == "null";
     }
 
 }

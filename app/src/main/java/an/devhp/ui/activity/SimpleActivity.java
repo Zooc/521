@@ -10,7 +10,7 @@ import android.view.ViewGroup;
 
 import an.devhp.Architecture.BasePresenter;
 import an.devhp.R;
-import an.devhp.manager.SimpleFragmentFactory;
+import an.devhp.manager.FragmentFactory;
 import an.devhp.model.constant.IExtras;
 import an.devhp.ui.BaseActivity;
 import an.devhp.ui.fragment.SimpleFragment;
@@ -34,7 +34,7 @@ public class SimpleActivity extends BaseActivity {
 
         Intent intent = getIntent();
         int simpleFragmentId = intent.getIntExtra(IExtras.KEY_SIMPLE_FRAGMENT_ID, -1);
-        simpleFragment = SimpleFragmentFactory.create(simpleFragmentId);
+        simpleFragment = FragmentFactory.create(simpleFragmentId);
 
         Bundle bundle = intent.getExtras();
         if (bundle != null) {

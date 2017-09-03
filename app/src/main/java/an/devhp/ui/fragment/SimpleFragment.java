@@ -6,6 +6,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import an.devhp.Architecture.BasePresenter;
 import an.devhp.ui.BaseFragment;
 import butterknife.ButterKnife;
 
@@ -17,6 +18,11 @@ import butterknife.ButterKnife;
  */
 
 public abstract class SimpleFragment extends BaseFragment {
+
+    @Override
+    protected BasePresenter onCreatePresenter() {
+        return null;
+    }
 
     @Nullable
     @Override
@@ -55,6 +61,8 @@ public abstract class SimpleFragment extends BaseFragment {
      * @return
      */
     public abstract String getTitle();
+
+    public abstract int getSimpleFragmentId();
 
 
 }

@@ -1,4 +1,5 @@
 apply plugin: 'com.android.application'
+apply plugin: 'realm-android'
 
 android {
     compileSdkVersion 25
@@ -12,8 +13,16 @@ android {
         versionName "1.0.0"
     }
     buildTypes {
-        release {
+
+        debug {
+            buildConfigField("Boolean", "DEV_MODE", "true")
             minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+
+        release {
+            buildConfigField("Boolean", "DEV_MODE", "false")
+            minifyEnabled true
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
     }

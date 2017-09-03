@@ -3,14 +3,14 @@
     package="an.devhp">
 
     <application
-        android:name=".AnApp"
+        android:name=".manager.AnApp"
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity
-            android:name=".AnMainActivity"
+            android:name=".ui.activity.HomeActivity"
             android:label="@string/app_name"
             android:theme="@style/AppTheme">
             <intent-filter>
@@ -22,7 +22,7 @@
 
         <activity
             android:name=".ui.activity.SimpleActivity"
-            android:launchMode="singleTop"
+            android:launchMode="standard"
             android:screenOrientation="portrait" />
     </application>
 
