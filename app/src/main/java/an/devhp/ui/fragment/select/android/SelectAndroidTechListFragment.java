@@ -7,6 +7,9 @@ import an.devhp.ui.fragment.SimpleFragment;
 import an.devhp.ui.fragment.SimpleListFragment;
 
 import static an.devhp.manager.FragmentFactory.create;
+import static an.devhp.manager.FragmentIds.SELECT_DB;
+import static an.devhp.manager.FragmentIds.SELECT_MEDIA;
+import static an.devhp.manager.FragmentIds.SELECT_PICTURE;
 import static an.devhp.util.LsUtil.add;
 
 /**
@@ -33,8 +36,7 @@ public class SelectAndroidTechListFragment extends SimpleListFragment {
     }
 
     @Override
-    protected void initData(List<SimpleFragment> fragments) {
-        add(fragments, create(FragmentIds.SELECT_PICTURE));
-        add(fragments, create(FragmentIds.SELECT_DB));
+    public int[] getFragmentIds() {
+        return new int[]{SELECT_PICTURE,SELECT_DB,SELECT_MEDIA};
     }
 }
