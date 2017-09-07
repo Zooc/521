@@ -177,6 +177,11 @@ public class ShowExoPlayerFragment extends SimpleListFragment {
         }
 
         @Override
+        public void onRepeatModeChanged(int repeatMode) {
+            Log.e("dev", "onRepeatModeChanged");
+        }
+
+        @Override
         public void onPlayerError(ExoPlaybackException error) {
             Log.e("dev", "onPlayerError");
         }
