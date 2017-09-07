@@ -78,11 +78,11 @@ public class ShowRealmFragment extends SimpleListFragment {
                 "改最后一个", "改全部",
                 "查询全部", "查询降序", "查询升序",
                 "异步操作");
-        SimpleStringListAdapter adapter = new SimpleStringListAdapter(mActivity, list);
+        final SimpleStringListAdapter adapter = new SimpleStringListAdapter(mActivity, list);
         adapter.setOnItemClickListener(new ListItemClickListener() {
             @Override
-            public <T> void onListItemClick(List<T> ts, int position) {
-                T t = LsUtil.getLsElement(ts, position);
+            public void onListItemClick(View view, int position) {
+                Object t = LsUtil.getLsElement(adapter.getData(),position);
                 if (t instanceof String) {
                     String key = (String) t;
                     final Realm realm = Realm.getDefaultInstance();
@@ -203,6 +203,7 @@ public class ShowRealmFragment extends SimpleListFragment {
                     }
                     queryAll(realm);
                 }
+
             }
         });
         setAdapter(adapter);

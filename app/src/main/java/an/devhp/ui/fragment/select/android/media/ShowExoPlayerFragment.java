@@ -93,22 +93,22 @@ public class ShowExoPlayerFragment extends SimpleListFragment {
         super.onActivityCreated(savedInstanceState);
         List<String> list = new ArrayList<>();
         LsUtil.add(list, "在线播放视频", "在线播放音频");
-        SimpleStringListAdapter adapter = new SimpleStringListAdapter(mActivity, list);
+        final SimpleStringListAdapter adapter = new SimpleStringListAdapter(mActivity, list);
         setAdapter(adapter);
         adapter.setOnItemClickListener(new ListItemClickListener() {
             @Override
-            public <T> void onListItemClick(List<T> dataList, int position) {
-                T t = LsUtil.getLsElement(dataList, position);
+            public void onListItemClick(View view, int position) {
+                Object t = LsUtil.getLsElement(adapter.getData(), position);
                 if (t instanceof String) {
                     if ("在线播放视频".equals(t)) {
-                        if(mPlayer!=null){
+                        if (mPlayer != null) {
                             mPlayer.stop();
                         }
                         initPlayer(true);
                         mPlayerUri = Uri.parse(VIDEO_PATH);
                         playOnLineVideo();
                     } else if ("在线播放音频".equals(t)) {
-                        if(mPlayer!=null){
+                        if (mPlayer != null) {
                             mPlayer.stop();
                         }
                         initPlayer(false);

@@ -10,6 +10,7 @@ import android.view.ViewGroup;
 import java.util.List;
 
 import an.devhp.ui.listener.ListItemClickListener;
+import an.devhp.ui.viewholder.BaseViewHolder;
 import an.devhp.util.LsUtil;
 
 /**
@@ -19,7 +20,7 @@ import an.devhp.util.LsUtil;
  * @version: 1.0
  */
 
-public abstract class SimpleListAdapter<T, V extends RecyclerView.ViewHolder> extends RecyclerView.Adapter<V> {
+public abstract class SimpleListAdapter<T, V extends BaseViewHolder> extends RecyclerView.Adapter<V> {
 
     private Context mContext;
     private LayoutInflater mInflater;
@@ -31,18 +32,13 @@ public abstract class SimpleListAdapter<T, V extends RecyclerView.ViewHolder> ex
         mItemClickListener = l;
     }
 
-    public ListItemClickListener getItemClickListener() {
-        return mItemClickListener;
-    }
-
-
     public SimpleListAdapter(Context context, List<T> data) {
         mContext = context;
         mInflater = LayoutInflater.from(context);
         mData = data;
     }
 
-    protected List<T> getData() {
+    public List<T> getData() {
         return mData;
     }
 
@@ -67,4 +63,10 @@ public abstract class SimpleListAdapter<T, V extends RecyclerView.ViewHolder> ex
         return mInflater.inflate(mContext.getResources().getLayout(layoutId), parent, false);
     }
 
+    @Override
+    public void onBindViewHolder(V holder, int position) {
+        if(holder!=null){
+            holder.setListItemClickListener(mItemClickListener);
+        }
+    }
 }

@@ -34,7 +34,7 @@ public abstract class SimpleTextViewHolder<T> extends BaseViewHolder {
         tvItem.setGravity(textGravity);
     }
 
-    public void bindData(final List<T> list, T t, int itemCount, final int position, final ListItemClickListener l) {
+    public void bindData(T t, int itemCount, final int position) {
         if (t != null) {
             TvUtil.setText(tvItem, getSimpleItemText(t));
         }
@@ -43,14 +43,6 @@ public abstract class SimpleTextViewHolder<T> extends BaseViewHolder {
             vLine.setVisibility(View.GONE);
         } else {
             vLine.setVisibility(View.VISIBLE);
-        }
-        if (l != null && getItemView() != null) {
-            getItemView().setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    l.onListItemClick(list, position);
-                }
-            });
         }
     }
 

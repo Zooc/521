@@ -29,8 +29,9 @@ public class SimpleStringListAdapter extends SimpleListAdapter<String, SimpleStr
 
     @Override
     public void onBindViewHolder(SimpleStringViewHolder holder, int position) {
+        super.onBindViewHolder(holder, position);
         if (holder != null) {
-            holder.bindData(getData(), getItem(position), getItemCount(), position, getItemClickListener());
+            holder.bindData(getItem(position), getItemCount(), position);
         }
     }
 }

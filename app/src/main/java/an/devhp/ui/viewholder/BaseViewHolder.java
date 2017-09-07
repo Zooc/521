@@ -3,6 +3,7 @@ package an.devhp.ui.viewholder;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
 
+import an.devhp.ui.listener.ListItemClickListener;
 import butterknife.ButterKnife;
 
 /**
@@ -24,5 +25,16 @@ public class BaseViewHolder extends RecyclerView.ViewHolder {
 
     public View getItemView() {
         return mItemView;
+    }
+
+    public void setListItemClickListener(final ListItemClickListener l){
+        if(l!=null&&mItemView!=null){
+            mItemView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    l.onListItemClick(v,getLayoutPosition());
+                }
+            });
+        }
     }
 }

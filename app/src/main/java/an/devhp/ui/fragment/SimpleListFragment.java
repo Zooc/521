@@ -72,13 +72,15 @@ public abstract class SimpleListFragment extends SimpleFragment {
     }
 
 
-    protected void initAdapter(SimpleFragmentAdapter adapter) {
+    protected void initAdapter(final SimpleFragmentAdapter adapter) {
         adapter.setOnItemClickListener(new ListItemClickListener() {
             @Override
-            public <T> void onListItemClick(List<T> list, int position) {
-                T t = list.get(position);
-                if (t instanceof SimpleFragment) {
-                    AcUtil.startSimpleActivity(mActivity, ((SimpleFragment) t).getSimpleFragmentId(), null);
+            public void onListItemClick(View view, int position) {
+                if (adapter != null) {
+                    Object t = LsUtil.getLsElement(adapter.getData(), position);
+                    if (t instanceof SimpleFragment) {
+                        AcUtil.startSimpleActivity(mActivity, ((SimpleFragment) t).getSimpleFragmentId(), null);
+                    }
                 }
             }
         });

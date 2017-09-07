@@ -1,6 +1,6 @@
 package an.devhp.ui.listener;
 
-import java.util.List;
+import android.view.View;
 
 /**
  * @description:
@@ -11,5 +11,5 @@ import java.util.List;
 
 public interface ListItemClickListener {
 
-    <T> void onListItemClick(List<T> dataList, int position);
+    void onListItemClick(View view, int position);
 }
