@@ -62,7 +62,7 @@ public abstract class SimpleFragment extends BaseFragment {
      */
     public abstract String getTitle();
 
-    public abstract int getSimpleFragmentId();
+    public abstract long getSimpleFragmentId();
 
 
 }

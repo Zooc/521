@@ -27,12 +27,24 @@ public class BaseViewHolder extends RecyclerView.ViewHolder {
         return mItemView;
     }
 
-    public void setListItemClickListener(final ListItemClickListener l){
-        if(l!=null&&mItemView!=null){
+    public void setListItemClickListener(final ListItemClickListener l) {
+        if (l != null && mItemView != null) {
             mItemView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    l.onListItemClick(v,getLayoutPosition());
+                    l.onListItemClick(v, getLayoutPosition());
+                }
+            });
+        }
+    }
+
+    public void setListItemLongClickListener(final ListItemClickListener l) {
+        if (l != null && mItemView != null) {
+            mItemView.setOnLongClickListener(new View.OnLongClickListener() {
+                @Override
+                public boolean onLongClick(View v) {
+                    l.onListItemClick(v, getLayoutPosition());
+                    return true;
                 }
             });
         }

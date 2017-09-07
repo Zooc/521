@@ -24,12 +24,12 @@ public class SelectMediaListFragment extends SimpleListFragment {
     }
 
     @Override
-    public int getSimpleFragmentId() {
+    public long getSimpleFragmentId() {
         return SELECT_MEDIA;
     }
 
     @Override
-    public int[] getFragmentIds() {
-        return new int[]{SHOW_EXO_PLAYER_MEDIA};
+    public long[] getFragmentIds() {
+        return new long[]{SHOW_EXO_PLAYER_MEDIA};
     }
 }

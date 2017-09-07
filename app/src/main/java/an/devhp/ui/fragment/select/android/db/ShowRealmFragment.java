@@ -56,7 +56,7 @@ public class ShowRealmFragment extends SimpleListFragment {
     }
 
     @Override
-    public int getSimpleFragmentId() {
+    public long getSimpleFragmentId() {
         return FragmentIds.SHOW_REALM_DB;
     }
 

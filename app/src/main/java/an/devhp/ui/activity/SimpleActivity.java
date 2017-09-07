@@ -33,7 +33,7 @@ public class SimpleActivity extends BaseActivity {
         super.onCreate(savedInstanceState);
 
         Intent intent = getIntent();
-        int simpleFragmentId = intent.getIntExtra(IExtras.KEY_SIMPLE_FRAGMENT_ID, -1);
+        long simpleFragmentId = intent.getLongExtra(IExtras.KEY_SIMPLE_FRAGMENT_ID, -1);
         simpleFragment = FragmentFactory.create(simpleFragmentId);
 
         Bundle bundle = intent.getExtras();

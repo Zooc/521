@@ -6,6 +6,7 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
 
 import com.alibaba.android.vlayout.VirtualLayoutAdapter;
 
@@ -13,6 +14,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import an.devhp.R;
+import an.devhp.manager.AppPref;
 import an.devhp.manager.FragmentFactory;
 import an.devhp.ui.adapter.SimpleFragmentAdapter;
 import an.devhp.ui.listener.ListItemClickListener;
@@ -76,14 +78,34 @@ public abstract class SimpleListFragment extends SimpleFragment {
         adapter.setOnItemClickListener(new ListItemClickListener() {
             @Override
             public void onListItemClick(View view, int position) {
-                if (adapter != null) {
-                    Object t = LsUtil.getLsElement(adapter.getData(), position);
-                    if (t instanceof SimpleFragment) {
-                        AcUtil.startSimpleActivity(mActivity, ((SimpleFragment) t).getSimpleFragmentId(), null);
-                    }
-                }
+                onFragmentListItemClick(position, adapter);
             }
         });
+        adapter.setOnItemLongClickListener(new ListItemClickListener() {
+            @Override
+            public void onListItemClick(View view, int position) {
+                onFragmentListItemLongClicked(position, adapter);
+            }
+        });
+    }
+
+    protected void onFragmentListItemLongClicked(int position, SimpleFragmentAdapter adapter) {
+        Object t = LsUtil.getLsElement(adapter.getData(), position);
+        if (t instanceof SimpleFragment) {
+            SimpleFragment sf = (SimpleFragment) t;
+            if (AppPref.getInstance().putItemShowAtHome(sf.getSimpleFragmentId())) {
+                Toast.makeText(mActivity, "Item add", Toast.LENGTH_LONG).show();
+            }
+        }
+    }
+
+    protected void onFragmentListItemClick(int position, SimpleFragmentAdapter adapter) {
+        if (adapter != null) {
+            Object t = LsUtil.getLsElement(adapter.getData(), position);
+            if (t instanceof SimpleFragment) {
+                AcUtil.startSimpleActivity(mActivity, ((SimpleFragment) t).getSimpleFragmentId(), null);
+            }
+        }
     }
 
     protected View onCreateRecyclerView(LayoutInflater inflater, ViewGroup container) {
@@ -108,14 +130,14 @@ public abstract class SimpleListFragment extends SimpleFragment {
 
     protected void initData(List<SimpleFragment> fragments) {
         if (getFragmentIds() != null) {
-            int[] fragmentIds = getFragmentIds();
-            for (int id : fragmentIds) {
+            long[] fragmentIds = getFragmentIds();
+            for (long id : fragmentIds) {
                 LsUtil.add(fragments, FragmentFactory.create(id));
             }
         }
     }
 
-    public int[] getFragmentIds() {
+    public long[] getFragmentIds() {
         return null;
     }
 

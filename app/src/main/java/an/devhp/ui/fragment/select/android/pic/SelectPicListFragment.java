@@ -28,7 +28,7 @@ public class SelectPicListFragment extends SimpleListFragment {
     }
 
     @Override
-    public int getSimpleFragmentId() {
+    public long getSimpleFragmentId() {
         return FragmentIds.SELECT_PICTURE;
     }
 

@@ -14,12 +14,19 @@ import io.realm.RealmConfiguration;
 
 public class AnApp extends Application {
 
+    private static AnApp mInstance;
+
     @Override
     public void onCreate() {
         super.onCreate();
+        mInstance = this;
         Realm.init(this);
         RealmConfiguration realmConfiguration
                 = new RealmConfiguration.Builder().name("andevhelper.realm").build();
         Realm.setDefaultConfiguration(realmConfiguration);
+    }
+
+    public static AnApp getInstance() {
+        return mInstance;
     }
 }

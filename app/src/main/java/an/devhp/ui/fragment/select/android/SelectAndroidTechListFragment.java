@@ -27,7 +27,7 @@ public class SelectAndroidTechListFragment extends SimpleListFragment {
     }
 
     @Override
-    public int getSimpleFragmentId() {
+    public long getSimpleFragmentId() {
         return FragmentIds.SELECT_ANDROID_TECH;
     }
 
@@ -36,7 +36,7 @@ public class SelectAndroidTechListFragment extends SimpleListFragment {
     }
 
     @Override
-    public int[] getFragmentIds() {
-        return new int[]{SELECT_PICTURE,SELECT_DB,SELECT_MEDIA};
+    public long[] getFragmentIds() {
+        return new long[]{SELECT_PICTURE,SELECT_DB,SELECT_MEDIA};
     }
 }

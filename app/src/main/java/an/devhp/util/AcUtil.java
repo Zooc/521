@@ -21,7 +21,7 @@ public class AcUtil {
         //no instance
     }
 
-    public static void startSimpleActivity(Context context, int simpleFragmentId, Bundle bundle) {
+    public static void startSimpleActivity(Context context, long simpleFragmentId, Bundle bundle) {
         Intent intent = new Intent(context, SimpleActivity.class);
         intent.putExtra(KEY_SIMPLE_FRAGMENT_ID, simpleFragmentId);
         if (bundle != null) {

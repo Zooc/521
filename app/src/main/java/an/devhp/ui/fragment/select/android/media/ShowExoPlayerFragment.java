@@ -74,7 +74,7 @@ public class ShowExoPlayerFragment extends SimpleListFragment {
     }
 
     @Override
-    public int getSimpleFragmentId() {
+    public long getSimpleFragmentId() {
         return FragmentIds.SHOW_EXO_PLAYER_MEDIA;
     }
 

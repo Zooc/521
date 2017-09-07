@@ -27,9 +27,14 @@ public abstract class SimpleListAdapter<T, V extends BaseViewHolder> extends Rec
     private List<T> mData;
 
     private ListItemClickListener mItemClickListener;
+    private ListItemClickListener mLongClickListener;
 
     public void setOnItemClickListener(ListItemClickListener l) {
         mItemClickListener = l;
+    }
+
+    public void setOnItemLongClickListener(ListItemClickListener l) {
+        mLongClickListener = l;
     }
 
     public SimpleListAdapter(Context context, List<T> data) {
@@ -65,8 +70,9 @@ public abstract class SimpleListAdapter<T, V extends BaseViewHolder> extends Rec
 
     @Override
     public void onBindViewHolder(V holder, int position) {
-        if(holder!=null){
+        if (holder != null) {
             holder.setListItemClickListener(mItemClickListener);
+            holder.setListItemLongClickListener(mLongClickListener);
         }
     }
 }

@@ -73,4 +73,19 @@ public class LsUtil {
         add(list, false, ts);
     }
 
+    /**
+     * 判断两个列表时候不同
+     * @param oriList
+     * @param destList
+     * @param <T>
+     * @return
+     */
+    public static <T> boolean isListDifferent(List<T> oriList, List<T> destList) {
+        return (oriList == null && destList != null && destList.size() > 0) ||
+                (oriList != null && oriList.size() > 0 && destList == null) ||
+                (oriList != null && destList != null && oriList.size() != destList.size()) ||
+                (oriList != null && !oriList.equals(destList)) ||
+                (destList != null && !destList.equals(oriList));
+    }
+
 }
