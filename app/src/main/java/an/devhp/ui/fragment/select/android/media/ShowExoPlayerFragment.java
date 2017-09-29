@@ -8,9 +8,11 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.google.android.exoplayer2.DefaultLoadControl;
 import com.google.android.exoplayer2.ExoPlaybackException;
 import com.google.android.exoplayer2.ExoPlayer;
 import com.google.android.exoplayer2.ExoPlayerFactory;
+import com.google.android.exoplayer2.LoadControl;
 import com.google.android.exoplayer2.PlaybackParameters;
 import com.google.android.exoplayer2.SimpleExoPlayer;
 import com.google.android.exoplayer2.Timeline;
@@ -140,12 +142,19 @@ public class ShowExoPlayerFragment extends SimpleListFragment {
     @NonNull
     private void initPlayer(boolean playVideo) {
         //    1. Create a default TrackSelector
+//        BandwidthMeter bandwidthMeter = new DefaultBandwidthMeter();
+//        TrackSelection.Factory videoTrackSelectionFactory = new AdaptiveTrackSelection.Factory(bandwidthMeter);
+//        TrackSelector trackSelector = new DefaultTrackSelector(videoTrackSelectionFactory);
         BandwidthMeter bandwidthMeter = new DefaultBandwidthMeter();
-        TrackSelection.Factory videoTrackSelectionFactory = new AdaptiveTrackSelection.Factory(bandwidthMeter);
-        TrackSelector trackSelector = new DefaultTrackSelector(videoTrackSelectionFactory);
+        TrackSelection.Factory audioTrackSelectionFactory = new AdaptiveTrackSelection.Factory(bandwidthMeter);
+        TrackSelector trackSelector = new DefaultTrackSelector(audioTrackSelectionFactory);
+        LoadControl loadControl = new DefaultLoadControl();
+        mPlayer = ExoPlayerFactory.newSimpleInstance(getActivity(), trackSelector, loadControl);
+
+
 
         //    2. Create the mPlayer
-        mPlayer = ExoPlayerFactory.newSimpleInstance(mActivity, trackSelector);
+//        mPlayer = ExoPlayerFactory.newSimpleInstance(mActivity, trackSelector);
 
         //    3. Bind the mPlayer to the view
         mExoView.setPlayer(playVideo ? mPlayer : null);
