@@ -2,7 +2,6 @@ package an.devhp.ui;
 
 import android.content.Context;
 import android.os.Bundle;
-import android.support.v7.widget.Toolbar;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -14,6 +13,7 @@ import an.devhp.Architecture.IBaseView;
 import an.devhp.R;
 import an.devhp.common.CommonActivity;
 import an.devhp.util.ViewUtil;
+import androidx.appcompat.widget.Toolbar;
 import butterknife.ButterKnife;
 
 import static an.devhp.util.ViewUtil.findById;

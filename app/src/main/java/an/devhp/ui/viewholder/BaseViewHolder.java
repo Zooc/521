@@ -1,9 +1,9 @@
 package an.devhp.ui.viewholder;
 
-import android.support.v7.widget.RecyclerView;
 import android.view.View;
 
 import an.devhp.ui.listener.ListItemClickListener;
+import androidx.recyclerview.widget.RecyclerView;
 import butterknife.ButterKnife;
 
 /**

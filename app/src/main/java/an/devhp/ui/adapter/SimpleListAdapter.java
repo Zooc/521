@@ -1,8 +1,6 @@
 package an.devhp.ui.adapter;
 
 import android.content.Context;
-import android.support.annotation.LayoutRes;
-import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -12,6 +10,8 @@ import java.util.List;
 import an.devhp.ui.listener.ListItemClickListener;
 import an.devhp.ui.viewholder.BaseViewHolder;
 import an.devhp.util.LsUtil;
+import androidx.annotation.LayoutRes;
+import androidx.recyclerview.widget.RecyclerView;
 
 /**
  * @description:

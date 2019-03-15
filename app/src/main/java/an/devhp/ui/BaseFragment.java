@@ -2,8 +2,6 @@ package an.devhp.ui;
 
 import android.content.Context;
 import android.os.Bundle;
-import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentManager;
 import android.view.View;
 
 import java.lang.reflect.Field;
@@ -11,6 +9,8 @@ import java.util.List;
 
 import an.devhp.Architecture.BasePresenter;
 import an.devhp.Architecture.IBaseView;
+import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
 import butterknife.ButterKnife;
 
 /**

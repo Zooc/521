@@ -1,13 +1,13 @@
 package an.devhp.ui.fragment;
 
 import android.os.Bundle;
-import android.support.annotation.Nullable;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
 import an.devhp.Architecture.BasePresenter;
 import an.devhp.ui.BaseFragment;
+import androidx.annotation.Nullable;
 import butterknife.ButterKnife;
 
 /**

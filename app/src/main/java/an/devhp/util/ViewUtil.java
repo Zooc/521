@@ -2,10 +2,10 @@ package an.devhp.util;
 
 import android.app.Activity;
 import android.app.Dialog;
-import android.support.annotation.IdRes;
-import android.support.annotation.NonNull;
 import android.view.View;
 
+import androidx.annotation.IdRes;
+import androidx.annotation.NonNull;
 import butterknife.ButterKnife;
 
 /**
@@ -22,14 +22,14 @@ public class ViewUtil {
     }
 
     public static <T extends View> T findById(@NonNull View view, @IdRes int id) {
-        return ButterKnife.findById(view, id);
+        return view.findViewById(id);
     }
 
     public static <T extends View> T findById(@NonNull Activity activity, @IdRes int id) {
-        return ButterKnife.findById(activity, id);
+        return activity.findViewById(id);
     }
 
     public static <T extends View> T findById(@NonNull Dialog dialog, @IdRes int id) {
-        return ButterKnife.findById(dialog, id);
+        return dialog.findViewById(id);
     }
 }

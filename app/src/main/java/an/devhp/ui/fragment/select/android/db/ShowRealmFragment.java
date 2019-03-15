@@ -1,8 +1,6 @@
 package an.devhp.ui.fragment.select.android.db;
 
 import android.os.Bundle;
-import android.support.v7.widget.LinearLayoutManager;
-import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -19,6 +17,8 @@ import an.devhp.ui.adapter.SimpleStringListAdapter;
 import an.devhp.ui.fragment.SimpleListFragment;
 import an.devhp.ui.listener.ListItemClickListener;
 import an.devhp.util.LsUtil;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 import butterknife.BindView;
 import io.realm.Realm;
 import io.realm.RealmResults;

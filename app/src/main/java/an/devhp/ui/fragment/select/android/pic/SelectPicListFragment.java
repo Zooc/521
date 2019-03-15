@@ -1,12 +1,12 @@
 package an.devhp.ui.fragment.select.android.pic;
 
-import android.support.annotation.NonNull;
 
 import java.util.List;
 
 import an.devhp.manager.FragmentIds;
 import an.devhp.ui.fragment.SimpleFragment;
 import an.devhp.ui.fragment.SimpleListFragment;
+import androidx.annotation.NonNull;
 
 /**
  * @description: 选择图片选项

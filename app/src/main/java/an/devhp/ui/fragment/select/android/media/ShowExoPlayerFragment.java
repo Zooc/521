@@ -2,11 +2,11 @@ package an.devhp.ui.fragment.select.android.media;
 
 import android.net.Uri;
 import android.os.Bundle;
-import android.support.annotation.NonNull;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+
 
 import com.google.android.exoplayer2.DefaultLoadControl;
 import com.google.android.exoplayer2.ExoPlaybackException;
@@ -15,23 +15,16 @@ import com.google.android.exoplayer2.ExoPlayerFactory;
 import com.google.android.exoplayer2.LoadControl;
 import com.google.android.exoplayer2.PlaybackParameters;
 import com.google.android.exoplayer2.SimpleExoPlayer;
-import com.google.android.exoplayer2.Timeline;
-import com.google.android.exoplayer2.extractor.DefaultExtractorsFactory;
-import com.google.android.exoplayer2.extractor.ExtractorsFactory;
-import com.google.android.exoplayer2.source.ExtractorMediaSource;
-import com.google.android.exoplayer2.source.MediaSource;
 import com.google.android.exoplayer2.source.TrackGroupArray;
 import com.google.android.exoplayer2.trackselection.AdaptiveTrackSelection;
 import com.google.android.exoplayer2.trackselection.DefaultTrackSelector;
 import com.google.android.exoplayer2.trackselection.TrackSelection;
 import com.google.android.exoplayer2.trackselection.TrackSelectionArray;
 import com.google.android.exoplayer2.trackselection.TrackSelector;
+import com.google.android.exoplayer2.ui.PlayerControlView;
 import com.google.android.exoplayer2.ui.SimpleExoPlayerView;
 import com.google.android.exoplayer2.upstream.BandwidthMeter;
-import com.google.android.exoplayer2.upstream.DataSource;
 import com.google.android.exoplayer2.upstream.DefaultBandwidthMeter;
-import com.google.android.exoplayer2.upstream.DefaultDataSourceFactory;
-import com.google.android.exoplayer2.util.Util;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -42,7 +35,7 @@ import an.devhp.ui.adapter.SimpleStringListAdapter;
 import an.devhp.ui.fragment.SimpleListFragment;
 import an.devhp.ui.listener.ListItemClickListener;
 import an.devhp.util.LsUtil;
-import an.devhp.widget.PlayCtrlView;
+import androidx.annotation.NonNull;
 import butterknife.BindView;
 
 /**
@@ -62,7 +55,7 @@ public class ShowExoPlayerFragment extends SimpleListFragment {
     SimpleExoPlayerView mExoView;
 
     @BindView(R.id.play_ctrl_v)
-    PlayCtrlView mVPlayCtrl;
+    PlayerControlView mVPlayCtrl;
 
     SimpleExoPlayer mPlayer;
 
@@ -125,15 +118,15 @@ public class ShowExoPlayerFragment extends SimpleListFragment {
 
     private void playOnLineVideo() {
         //    Measure bandwidth during playback. Can be null if not required.
-        DefaultBandwidthMeter bandwidthMeter1 = new DefaultBandwidthMeter();
-        //    Produces data source instances through which media data is loaded.
-        DataSource.Factory dataSourceFactory = new DefaultDataSourceFactory(mActivity, Util.getUserAgent(mActivity, "AnDevHelper"), bandwidthMeter1);
-        //    Produces Extractor instances for parsing the media data.
-        ExtractorsFactory extractorsFactory = new DefaultExtractorsFactory();
-        //    This is the Media source representing the media to be played.
-        MediaSource videoSource = new ExtractorMediaSource(mPlayerUri, dataSourceFactory, extractorsFactory, null, null);
-        //    Prepare the mPlayer with the source.
-        mPlayer.prepare(videoSource);
+//        DefaultBandwidthMeter bandwidthMeter1 = new DefaultBandwidthMeter();
+//        //    Produces data source instances through which media data is loaded.
+//        DataSource.Factory dataSourceFactory = new DefaultDataSourceFactory(mActivity, Util.getUserAgent(mActivity, "AnDevHelper"), bandwidthMeter1);
+//        //    Produces Extractor instances for parsing the media data.
+//        ExtractorsFactory extractorsFactory = new DefaultExtractorsFactory();
+//        //    This is the Media source representing the media to be played.
+//        MediaSource videoSource = new ExtractorMediaSource(mPlayerUri, dataSourceFactory, extractorsFactory, null, null);
+//        //    Prepare the mPlayer with the source.
+//        mPlayer.prepare(videoSource);
 
         mPlayer.addListener(mEventListener);
         mPlayer.setPlayWhenReady(true);
@@ -165,10 +158,10 @@ public class ShowExoPlayerFragment extends SimpleListFragment {
     }
 
     private ExoPlayer.EventListener mEventListener = new ExoPlayer.EventListener() {
-        @Override
-        public void onTimelineChanged(Timeline timeline, Object manifest) {
-            Log.e("dev", "onTimelineChanged");
-        }
+//        @Override
+//        public void onTimelineChanged(Timeline timeline, Object manifest) {
+//            Log.e("dev", "onTimelineChanged");
+//        }
 
         @Override
         public void onTracksChanged(TrackGroupArray trackGroups, TrackSelectionArray trackSelections) {
@@ -195,10 +188,10 @@ public class ShowExoPlayerFragment extends SimpleListFragment {
             Log.e("dev", "onPlayerError");
         }
 
-        @Override
-        public void onPositionDiscontinuity() {
-            Log.e("dev", "onPositionDiscontinuity");
-        }
+//        @Override
+//        public void onPositionDiscontinuity() {
+//            Log.e("dev", "onPositionDiscontinuity");
+//        }
 
         @Override
         public void onPlaybackParametersChanged(PlaybackParameters playbackParameters) {

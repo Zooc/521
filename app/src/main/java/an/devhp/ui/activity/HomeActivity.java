@@ -1,7 +1,6 @@
 package an.devhp.ui.activity;
 
 import android.os.Bundle;
-import android.support.annotation.Nullable;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -11,6 +10,7 @@ import an.devhp.R;
 import an.devhp.manager.FragmentFactory;
 import an.devhp.manager.FragmentIds;
 import an.devhp.ui.BaseActivity;
+import androidx.annotation.Nullable;
 
 /**
  * @description:
